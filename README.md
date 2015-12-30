@@ -31,7 +31,7 @@ None
 ```yaml
 - hosts: all
   roles:
-    - swapfile
+    - { role: tersmitten.swapfile }
 ```
 
 or:
@@ -39,7 +39,7 @@ or:
 ```yaml
 - hosts: all
   roles:
-    - { role: swapfile, swapfile_size: 1GB, swapfile_swappiness: 10 }
+    - { role: tersmitten.swapfile, swapfile_size: 1GB, swapfile_swappiness: 10 }
 ```
 
 You can also set the variables described above in `group_vars` or `host_vars` (see `defaults/main.yml`).
