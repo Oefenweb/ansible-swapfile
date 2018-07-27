@@ -6,7 +6,7 @@ Ansible role to manage a swap file in Debian-like systems.
 
 #### Requirements
 
-* `fallocate` (will be installed)
+* `ansible-galaxy install oefenweb.swapfile` (will be installed)
 
 ## Variables
 
