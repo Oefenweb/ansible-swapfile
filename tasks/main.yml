@@ -14,12 +14,11 @@
 
 - block:
 
-    - name: write swap file
+    - name: write swap file  # noqa command-instead-of-module
       command: >
         fallocate -l {{ swapfile_size }} {{ swapfile_file }}
       args:
         creates: "{{ swapfile_file }}"
-        warn: false
       register: _write_swapfile
       tags:
         - swapfile-write-file
@@ -33,21 +32,17 @@
       tags:
         - swapfile-set-file-permissions
 
-    - name: create swap file
+    - name: create swap file  # noqa command-instead-of-module
       command: >
         mkswap {{ swapfile_file }}
-      args:
-        warn: false
       register: _create_swapfile
       when: _write_swapfile.changed
       tags:
         - swapfile-mkswap
 
-    - name: enable swapfile
+    - name: enable swapfile  # noqa command-instead-of-module
       command: >
         swapon {{ swapfile_file }}
-      args:
-        warn: false
       when: _create_swapfile is changed
       tags:
         - swapfile-enable-swapfile
