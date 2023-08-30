@@ -13,8 +13,7 @@
     - swapfile-install-dependencies
 
 - name: swap file
-  # TODO: Changing this to `when: swapfile_size` seems to fail, find out why
-  when: swapfile_size != false
+  when: not swapfile_size | bool
   tags:
     - configuration
     - swapfile
@@ -41,6 +40,7 @@
       ansible.builtin.command: >
         mkswap {{ swapfile_file }}
       register: _create_swapfile
+      changed_when: true
       when: _write_swapfile is changed
       tags:
         - swapfile-mkswap
@@ -48,6 +48,7 @@
     - name: enable swapfile  # noqa command-instead-of-module
       ansible.builtin.command: >
         swapon {{ swapfile_file }}
+      changed_when: true
       when: _create_swapfile is changed
       tags:
         - swapfile-enable-swapfile
