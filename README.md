@@ -24,7 +24,7 @@ None
 ```yaml
 - hosts: all
   roles:
-    - swapfile
+    - oefenweb.swapfile
 ```
 
 or:
@@ -32,7 +32,7 @@ or:
 ```yaml
 - hosts: all
   roles:
-    - role: swapfile
+    - role: oefenweb.swapfile
       swapfile_size: 1GB
       swapfile_swappiness: 10
 ```
