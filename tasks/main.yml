@@ -35,6 +35,7 @@
         mode: '0600'
       tags:
         - swapfile-set-file-permissions
+      when: not ansible_check_mode
 
     - name: create swap file  # noqa command-instead-of-module
       ansible.builtin.command: >
